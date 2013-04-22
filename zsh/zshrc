@@ -1,0 +1,65 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="kphoen"
+
+# Example aliases
+alias zconf="gedit ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+CASE_SENSITIVE="true"
+
+# Comment this out to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(python pip git sublime mvn)
+
+source $ZSH/oh-my-zsh.sh
+
+#Aliases
+alias hibernate='sudo pm-hibernate'
+alias shutdown='sudo init 0'
+alias restart='sudo init 6'
+alias l.='ls -d .* --color=auto'
+alias grep='grep --color=auto'
+alias ports='netstat -tulanp'
+alias ipt='sudo /sbin/iptables'
+alias fastping='ping -c 100 -s.2'
+alias meminfo='free -m -l -t'
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias cpuinfo='lscpu'
+alias pinstall='sudo apt-get install'
+alias premove='sudo apt-get remove'
+alias pupdate='sudo apt-get update'
+alias vim='sudo vim'
+alias hardware='sudo lshw'
+alias gcc='gcc -Wall -Wextra -Werror -g'
+alias ssh_ec2='ssh -v -i /home/kiran/Downloads/kirankey.pem ubuntu@ec2-23-23-65-211.compute-1.amazonaws.com'
+alias tweet='~/workspace/PYTHON_SCRIPTS/twitter_connect.py'
+alias diffnice='diff --side-by-side'
+
+# Customize to your needs...
+export PATH=$PATH:/home/kiran/.rvm/gems/ruby-1.9.3-p362/bin:/home/kiran/.rvm/gems/ruby-1.9.3-p362@global/bin:/home/kiran/.rvm/rubies/ruby-1.9.3-p362/bin:/home/kiran/.rvm/bin:/opt/AWS-ElasticBeanstalk-CLI-2.3.1/eb/linux/python2.7/:/home/kiran/Downloads/adt-bundle-linux-x86-20130219/sdk/platform-tools:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/kiran/.rvm/bin

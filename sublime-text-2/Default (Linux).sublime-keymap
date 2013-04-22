@@ -1,0 +1,4 @@
+[
+    { "keys": ["f12"], "command": "reindent"},
+    { "keys": ["ctrl+shift+v"], "command": "paste" }
+]
