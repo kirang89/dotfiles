@@ -1,97 +1,78 @@
-runtime! debian.vim
+set modelines=0		" CVE-2007-2438
 
-set nocompatible
+set nocompatible	" Use Vim defaults instead of 100% vi compatibility
 
-"Pathogen calls
+" =============== Pathogen Initialisation ==============
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
 call pathogen#helptags()
 
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-
-function! CWD()
-    let curdir = substitute(getcwd(), '/home/kiran', "~/", "g")
-    return curdir
-endfunction
+" ======================= General Info ===================
 
 syntax on
+set guifont=Consolas
+set textwidth=100
+set t_Co=256
+colorscheme 256-grayvim
+
 filetype plugin indent on
 set encoding=utf-8
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
-set hlsearch
-set incsearch		" Incremental search
-set ai "Auto indent
-set si "Smart indent
+
+set ai                  "Auto indent
+set si                  "Smart indent
 set smarttab
 set wrap
-set textwidth=100
 set autoindent
 set expandtab
-set shiftwidth=4 " Set indent to 4 spaces
-"set foldenable " Auto fold code
+
+set shiftwidth=4        " Set indent to 4 spaces
+"set foldenable         " Auto fold code
 set ruler
-set noswapfile
 set nu
 set title
+set backspace=2		   " more powerful backspacing
+set autoread           "Reload files changed outside vim
 
-if has("gui_running")
-  set cursorline
-endif
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
 
-syntax enable
-set guifont=Monaco\ 12
-set background=dark
-set t_Co=16
-"let g:solarized_termcolors=16
-colorscheme peachpuff
 
-" Utilise the command and status bar
+" =================== Search =====================
+
+set ignorecase          " Do case insensitive matching
+set smartcase           " Do smart case matching
+set hlsearch
+set incsearch           " Incremental search
+
+
+" ======================= Command and Status bar =========================
+
 set cmdheight=2
 set laststatus=2
 "set statusline=[%l,%v\ %P%M][CWD:\ %{CWD()}][FILE:\ %f]\ %r%h%w\ (%{&ff})
 set showcmd
 set showmode
-hi StatusLine ctermfg=Black ctermbg=White
-au InsertEnter * hi StatusLine ctermbg=DarkBlue
-au InsertLeave * hi StatusLine ctermfg=Black ctermbg=White
+hi StatusLine ctermfg=DarkGray ctermbg=White
+au InsertEnter * hi StatusLine ctermfg=White ctermbg=DarkBlue
+au InsertLeave * hi StatusLine ctermfg=DarkGray ctermbg=White
 
-" Silence
-if has('autocmd')
-      autocmd GUIEnter * set vb t_vb=
-endif
+" ======================= Backup Rules =========================
 
-"Python-Mode plugin
+set noswapfile
+set nobackup
+set nowb
+
+" Don't write backup file if vim is being called by "crontab -e"
+au BufWrite /private/tmp/crontab.* set nowritebackup
+
+" Don't write backup file if vim is being called by "chpass"
+au BufWrite /private/etc/pw.* set nowritebackup
+
+" ==================== Python-Mode plugin ======================
 
 " Enable all python highlightings
 let g:pymode_syntax_all = 1
-
-" Load pylint code plugin
-let g:pymode_lint = 1
-
-" Use pyflakes for code checking
-let g:pymode_lint_checker = "pyflakes,pep8"
-
-" Run linter on the fly
-let g:pymode_lint_onfly = 0
-
-" Check code every save
-let g:pymode_lint_write = 1
-
-" Show error message if cursor placed at the error line
-let g:pymode_lint_message = 1
-
-" Place error signs
-let g:pymode_lint_signs = 1
-
-" Minimal height of pylint error window
-let g:pymode_lint_minheight = 3
-
-" Maximal height of pylint error window
-let g:pymode_lint_maxheight = 6
 
 " Enable python folding
 let g:pymode_folding = 1
@@ -119,3 +100,4 @@ let g:pymode_syntax_builtin_funcs = g:pymode_syntax_all
 
 " Highlight exceptions
 let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+
