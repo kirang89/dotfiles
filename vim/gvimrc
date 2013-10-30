@@ -36,6 +36,17 @@ set title
 set backspace=2		   " more powerful backspacing
 set autoread           "Reload files changed outside vim
 
+" Start scrolling three lines before the horizontal window border
+set scrolloff=3
+
+" Automatic commands
+if has("autocmd")
+        " Enable file type detection
+        filetype on
+        " Treat .json files as .js
+        autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+endif
+
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 

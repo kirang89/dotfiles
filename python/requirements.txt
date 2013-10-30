@@ -1,0 +1,11 @@
+#
+# Python packages to be installed
+#
+
+virtualenv
+requests
+flake8
+ipython
+flask
+nose
+coverage

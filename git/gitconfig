@@ -1,0 +1,27 @@
+[user]
+	name = kirang89
+	email = kiran.daredevil@gmail.com
+[core]
+    excludesfile = ~/.gitignore
+[color]
+    ui = auto
+[color "diff"]
+    meta = cyan
+    frag = magenta
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[alias]
+    branches = branch -vv
+    st = status -sb
+    uncommit = reset HEAD^
+    authors = shortlog -sn
+    wdiff = diff --word-diff=color
+    wshow = show --word-diff=color
+[push]
+    default=current
+[merge]
+    log=true
