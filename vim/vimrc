@@ -10,16 +10,12 @@ call pathogen#helptags()
 
 " ======================= General Info ===================
 
-syntax on
-"if has("gui_running")
-"    set guifont=Consolas:h13
-"    set fuoptions=maxvert,maxhorz
-"    colorscheme wombat
-"endif
-
+syntax enable
 set textwidth=100
 set t_Co=256
-colorscheme 256-grayvim
+set background=light
+let g:solarized_termcolors = 256
+colorscheme github
 
 filetype plugin indent on
 set encoding=utf-8
@@ -29,12 +25,12 @@ set si                  "Smart indent
 set smarttab
 set wrap
 set autoindent
-set expandtab
+"set expandtab
 
 set shiftwidth=4        " Set indent to 4 spaces
 "set foldenable         " Auto fold code
 set ruler
-set nu
+"set nu
 set title
 set backspace=2		   " more powerful backspacing
 set autoread           "Reload files changed outside vim
