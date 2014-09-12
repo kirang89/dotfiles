@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+#
+# Make sure to add export PYTHONSTARTUP="/path/to/this/script"
+#
+
+import json
+import requests
+import os
+from datetime import datetime
+
+import os, errno
+class _readline:
+    history=os.path.join(os.environ['HOME'],'.pyshell_history')
+    import readline
+    readline.parse_and_bind("tab: complete")
+    import rlcompleter
+    def __init__(self):
+        try:
+            self.readline.read_history_file(self.history)
+        except (IOError, OSError), value:
+            if value.errno == errno.ENOENT:
+                pass
+            else:
+                raise
+    def __del__(self):
+        self.readline.write_history_file(self.history)
+_rl=_readline()
+
+def ppdict(d):
+    """Pretty Print for Dicts"""
+    print '{'
+    keys=d.keys()
+    keys.sort()
+    for k in keys:
+        spacing=" " #* (16-(len(repr(k))+1))
+        print "%s:%s%s," % (repr(k),spacing,repr(d[k]))
+    print '}'
+
+print "Custom Imports done!"
