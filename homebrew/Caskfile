@@ -1,0 +1,65 @@
+# Install native apps
+# Usage: `brew bundle Caskfile`
+
+install caskroom/cask/brew-cask
+tap caskroom/versions
+
+# dev tools
+cask install dash
+cask install github
+cask install iterm2
+cask install reggy
+cask install vagrant
+cask install vagrant-manager
+cask install virtualbox
+
+# browsers
+cask install firefox
+cask install google-chrome
+
+# editors
+cask install macvim
+cask install sublime-text
+
+# additional apps
+cask install alfred
+cask install cakebrew
+cask install dropbox
+cask install evernote
+cask install flash
+cask install spectacle
+cask install spotify
+cask install vlc
+cask install cloudup
+
+# quicklook plugins
+cask install qlcolorcode
+cask install qlstephen
+cask install qlmarkdown
+cask install quicklook-json
+cask install qlprettypatch
+cask install quicklook-csv
+cask install betterzipql
+cask install webp-quicklook
+
+# link dir into Alfred
+cask alfred link
+
+# fonts
+tap caskroom/fonts
+
+cask install font-alegreya-sans
+cask install font-alegreya
+cask install font-andale-mono
+cask install font-anonymous-pro
+cask install font-bitter
+cask install font-clear-sans
+cask install font-inconsolata-dz
+cask install font-inconsolata
+cask install font-liberation-mono-for-powerline
+cask install font-source-code-pro
+cask install font-source-sans-pro
+cask install font-roboto
+
+# cleanup
+cask cleanup
