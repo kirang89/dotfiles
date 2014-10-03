@@ -19,6 +19,7 @@ install node
 install readline
 install reattach-to-user-namespace
 install the_silver_searcher
+install mackup
 install tmux
 install wget
 install zsh
