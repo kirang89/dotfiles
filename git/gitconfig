@@ -2,7 +2,8 @@
 	name = kirang89
 	email = kiran.daredevil@gmail.com
 [core]
-    excludesfile = ~/.gitignore
+	excludesfile = /Users/kiran/.gitignore_global
+	editor = emacs
 [color]
     ui = auto
 [color "diff"]
@@ -15,13 +16,34 @@
     changed = green
     untracked = cyan
 [alias]
-    branches = branch -vv
-    st = status -sb
-    uncommit = reset HEAD^
+    a = add .
+    br = branch -vv
+    s = status
+    sb = status -sb
+    co = checkout
+    c = commit
+    cm = commit -m
+    cl = clone
+    uci = reset HEAD^
     authors = shortlog -sn
+    d = diff
+    f = fetch
+    ls = ls-files
+    m = merge
+    ps = push
+    plo = pull origin
+    plu = pull upstream
+    rao = remote add origin
+    rv = remote -v
+    rs = remote show
     wdiff = diff --word-diff=color
     wshow = show --word-diff=color
+    lg = log --graph --all
 [push]
     default=current
 [merge]
     log=true
+	tool = opendiff
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
