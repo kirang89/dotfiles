@@ -9,7 +9,7 @@
 (tool-bar-mode nil)
 
 ; don't show the scroll bar
-;(scroll-bar-mode nil)
+(scroll-bar-mode -1)
 
 ;; syntax highlighting by default
 (global-font-lock-mode 1)
@@ -29,7 +29,8 @@
 (show-paren-mode t)
 
 ; display line numbers to the right of the window
-;(global-linum-mode t)
+(global-linum-mode t)
+(setq linum-format " %d")
 
 ; require final newlines in files when they are saved
 (setq require-final-newline t)
@@ -102,11 +103,17 @@
 (highlight-current-line-on t)
 (set-face-background 'highlight-current-line-face "#5C5C5C")
 
+;; markdown-mode
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
 ;; yasnippet
 (add-to-list 'load-path
              "~/.emacs.d/elpa/yasnippet-20141005.124/")
 (require 'yasnippet)
 (yas-global-mode 1)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 
 ;; auto-complete
 (require 'auto-complete)
@@ -153,6 +160,10 @@
  python-shell-completion-string-code
    "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
+;; flycheck support
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; theme
 
 ;;(load-theme 'ujelly-theme)
@@ -162,13 +173,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tangotango)))
- '(custom-safe-themes (quote ("5d9351cd410bff7119978f8e69e4315fd1339aa7b3af6d398c5ca6fac7fd53c7" default)))
+ '(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector ["#454545" "#cd7542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#bdbc61" "#bdbdb3"])
+ '(custom-enabled-themes (quote (brin)))
+ '(custom-safe-themes (quote ("3d5ef3d7ed58c9ad321f05360ad8a6b24585b9c49abcee67bdcbb0fe583a6950" "a233249cc6f90098e13e555f5f5bf6f8461563a8043c7502fb0474be02affeea" "7bde52fdac7ac54d00f3d4c559f2f7aa899311655e7eb20ec5491f3b5c533fe8" "42ac06835f95bc0a734c21c61aeca4286ddd881793364b4e9bc2e7bb8b6cf848" "1e194b1010c026b1401146e24a85e4b7c545276845fc38b8c4b371c8338172ad" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "5d9351cd410bff7119978f8e69e4315fd1339aa7b3af6d398c5ca6fac7fd53c7" default)))
+ '(fci-rule-color "#d6d6d6")
+ '(markdown-command "/usr/local/bin/pandoc")
  '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(show-trailing-whitespace t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map (quote ((20 . "#c82829") (40 . "#f5871f") (60 . "#eab700") (80 . "#718c00") (100 . "#3e999f") (120 . "#4271ae") (140 . "#8959a8") (160 . "#c82829") (180 . "#f5871f") (200 . "#eab700") (220 . "#718c00") (240 . "#3e999f") (260 . "#4271ae") (280 . "#8959a8") (300 . "#c82829") (320 . "#f5871f") (340 . "#eab700") (360 . "#718c00"))))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
