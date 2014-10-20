@@ -48,14 +48,14 @@
 ;; turn beep off
 (setq visible-bell nil)
 
-;; don't create backup files
-(setq make-backup-files nil)
+;disable backup
+(setq backup-inhibited t)
 
 ;; auto fill for text mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; turn auto-save off
-(setq auto-save-default nil)
+(setq auto-save-default -1)
 
 (setq-default show-trailing-whitespace t)
 
