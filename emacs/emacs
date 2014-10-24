@@ -1,6 +1,14 @@
 ; language
 (setq current-language-environment "English")
 
+(setq initial-frame-alist '(
+   (font . "Source Code Pro-13:weight=ultra-light")
+))
+
+(setq default-frame-alist '(
+   (font . "Source Code Pro-13:weight=ultra-light")
+))
+
 ; don't show the menu bar
 (menu-bar-mode nil)
 
@@ -72,8 +80,12 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
+;; set unique names for two similar buffers
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+;; update the buffuer if a file has change on disk
+(global-auto-revert-mode)
 
 ;;
 ;; Extensions
@@ -101,10 +113,10 @@
 ;(set-face-background 'hl-line "#9998aa")
 (require 'highlight-current-line)
 (highlight-current-line-on t)
-(set-face-background 'highlight-current-line-face "#5C5C5C")
+(set-face-background 'highlight-current-line-face "#3D3D3D")
 
 ; set cursor color
-(set-cursor-color "#eee8dc")
+(set-cursor-color "#CFCFCF")
 
 ; keybindings for increasing/decreasing window height
 (global-set-key (kbd "C--") 'shrink-window)
@@ -188,8 +200,19 @@ Assumes that the frame is only split into two."
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; theme
+;; keybindings for dictionary
+(global-set-key "\C-cs" 'dictionary-search)
 
+;; font
+;;(set-face-font 'default "Consolas-13.0:antialias=subpixel")
+
+;; default frame size
+(add-to-list 'default-frame-alist '(left . 80))
+(add-to-list 'default-frame-alist '(top . 0))
+(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width . 90))
+
+;; theme
 ;;(load-theme 'ujelly-theme)
 
 (custom-set-variables
@@ -211,9 +234,4 @@ Assumes that the frame is only split into two."
  '(vc-annotate-background nil)
  '(vc-annotate-color-map (quote ((20 . "#c82829") (40 . "#f5871f") (60 . "#eab700") (80 . "#718c00") (100 . "#3e999f") (120 . "#4271ae") (140 . "#8959a8") (160 . "#c82829") (180 . "#f5871f") (200 . "#eab700") (220 . "#718c00") (240 . "#3e999f") (260 . "#4271ae") (280 . "#8959a8") (300 . "#c82829") (320 . "#f5871f") (340 . "#eab700") (360 . "#718c00"))))
  '(vc-annotate-very-old-color nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "nil" :slant normal :weight normal :height 141 :width normal)))))
+
