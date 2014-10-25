@@ -212,8 +212,15 @@ Assumes that the frame is only split into two."
 (add-to-list 'default-frame-alist '(height . 50))
 (add-to-list 'default-frame-alist '(width . 90))
 
-;; theme
-;;(load-theme 'ujelly-theme)
+;; powerline
+(require 'powerline)
+;;(powerline-default-theme)
+(powerline-center-theme)
+
+;; expand-region
+(require 'expand-region)
+(global-set-key (kbd "C-;") 'er/expand-region)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
