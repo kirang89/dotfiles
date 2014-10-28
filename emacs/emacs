@@ -20,11 +20,11 @@
   "Packages to be installed upon launch")
 
 (setq initial-frame-alist '(
-   (font . "Source Code Pro-13:weight=ultra-light")
+   (font . "Source Code Pro-13:weight=regular")
 ))
 
 (setq default-frame-alist '(
-   (font . "Source Code Pro-13:weight=ultra-light")
+   (font . "Source Code Pro-13:weight=regular")
 ))
 
 ; don't show the menu bar
@@ -177,6 +177,7 @@ Assumes that the frame is only split into two."
 (eval-after-load "org"
   '(require 'ox-md nil t))
 (setq org-directory "~/Box Sync/org-notes")
+(setq org-src-fontify-natively t)
 
 ;; python-mode settings
 (require 'python-mode)
@@ -258,6 +259,9 @@ Assumes that the frame is only split into two."
 
 ;; Theme park mode
 ;;(require 'theme-park-mode)
+
+;; git-awesome-mode
+(require 'magit)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
