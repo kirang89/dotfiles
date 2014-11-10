@@ -1,7 +1,7 @@
 alias zshconfig="vim ~/.zshrc"
 
 # General
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 alias cl='clear'
@@ -31,15 +31,18 @@ alias hideHidden="defaults write com.apple.finder AppleShowAllFiles -bool false 
 
 # Git
 alias ga='git add --all'
-alias gb='git branch'
+alias gb='git branch -vv'
 alias gc='git commit -a'
+alias gchbr='git checkout -b'
+alias gchm='git checkout master'
 alias gcm='git commit -a -m'
+alias gcam='git commit --amend'
 alias gco='git checkout'
 alias gcl='git clone'
 alias gd='git diff'
 alias gdlds="find . -depth -name '.DS_Store' -exec git rm --cached '{}' \; -print"
 alias gdm="git daemon --reuseaddr --base-path=/Users/kiran/Workspace/ --export-all --verbose"
-alias gl="git log"
+alias gl="git log --pretty=oneline"
 alias glg="git log --graph"
 alias glgp="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gls='git ls-files'
@@ -94,4 +97,10 @@ alias mosq="/usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
 alias tma='tmux attach -d -t'
 
 #Emacs
-alias gemacs='~/gemacs.sh'
+alias em='emacsclient -t'
+
+#kill pid
+alias k9='kill -9'
+
+#sed with saner regular expressions
+alias sed='sed -E'
