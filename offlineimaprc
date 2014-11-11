@@ -1,0 +1,36 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+ui=TTYUI
+accounts = PersonalGmail
+autorefresh = 5
+
+[Account PersonalGmail]
+localrepository = PersonalGmail-Local
+remoterepository = PersonalGmail-Remote
+status_backend = sqlite
+postsynchook = mu index --maildir=~/.Mail
+
+[Repository PersonalGmail-Local]
+type = Maildir
+localfolders = ~/.Mail/kiran.daredevil-gmail.com
+nametrans = lambda folder: {'flagged': '[Gmail]/Starred',
+                            }.get(folder, folder)
+
+[Repository PersonalGmail-Remote]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = kiran.daredevil@gmail.com
+remotepass = nananananbatman
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Starred':  'flagged',
+                            }.get(folder, folder)
+ssl = yes
+cert_fingerprint = <gmail fingerprint here>
+maxconnections = 1
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+					     '[Gmail]/Spam',
+					     '[Gmail]/All Mail',
+					     'Trash',
+                                             ]
