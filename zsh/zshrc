@@ -109,8 +109,10 @@ pyserv() {
 # Internal IP
 alias iip="ifconfig | grep -A 1 en1 | grep -e \"inet \""
 
-acv(){
+#Activate the closest virtualenv
+acv() {
     if [ -f env/bin/activate ]; then . env/bin/activate;
+    elif [ -f ../env/bin/activate ]; then . ../env/bin/activate;
     fi
 }
 

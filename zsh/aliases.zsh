@@ -42,7 +42,7 @@ alias gcl='git clone'
 alias gd='git diff'
 alias gdlds="find . -depth -name '.DS_Store' -exec git rm --cached '{}' \; -print"
 alias gdm="git daemon --reuseaddr --base-path=/Users/kiran/Workspace/ --export-all --verbose"
-alias gl="git log --pretty=oneline"
+alias gl="git log --oneline"
 alias glg="git log --graph"
 alias glgp="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gls='git ls-files'
@@ -55,6 +55,8 @@ alias gs='git status'
 alias gsb='git status -sb'
 alias gwd='git show --word-diff=color'
 alias giwd='git instaweb -d webrick'
+alias gst='git stash'
+alias gsta='git stash apply'
 
 # Python related
 alias pipi='sudo pip install'
@@ -97,10 +99,28 @@ alias mosq="/usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
 alias tma='tmux attach -d -t'
 
 #Emacs
-alias em='emacsclient -t'
+alias em='emacsclient -n -a ""'
 
 #kill pid
 alias k9='kill -9'
 
 #sed with saner regular expressions
 alias sed='sed -E'
+
+#offlinemap
+alias offlinemap="/usr/local/Cellar/offline-imap/6.5.6/bin/offlineimap"
+
+#syntax highlighted snippet
+alias pyg="pygmentize -f rtf -O "fontface=Inconsolata""
+
+#Misc
+alias utctime='python -c "from datetime import datetime; print datetime.utcnow()"'
+
+#Speedtest CLI
+alias spdt='speedtest-cli'
+alias ipy='ipython'
+
+#Boot2Docker
+alias bstart="boot2docker start"
+alias bstop="boot2docker stop"
+alias boff="boot2docker poweroff"
