@@ -1,9 +1,9 @@
 [user]
 	name = kirang89
-	email = kiran.daredevil@gmail.com
+	email = me@kirang.in
 [core]
 	excludesfile = /Users/kiran/.gitignore_global
-	editor = emacs
+	editor = emacsclient
 [color]
     ui = auto
 [color "diff"]
@@ -16,29 +16,29 @@
     changed = green
     untracked = cyan
 [alias]
-    a = add .
-    br = branch -vv
-    s = status
-    sb = status -sb
-    co = checkout
-    c = commit
-    cm = commit -m
-    cl = clone
-    uci = reset HEAD^
-    authors = shortlog -sn
-    d = diff
-    f = fetch
-    ls = ls-files
-    m = merge
-    ps = push
-    plo = pull origin
-    plu = pull upstream
-    rao = remote add origin
-    rv = remote -v
-    rs = remote show
+#    a = add .
+#    br = branch -vv
+#    s = status
+#    sb = status -sb
+#    co = checkout
+#    c = commit
+#    cm = commit -m
+#    cl = clone
+#    uci = reset HEAD^
+#    authors = shortlog -sn
+#    d = diff
+#    f = fetch
+#    ls = ls-files
+#    m = merge
+#    ps = push
+#    plo = pull origin
+#    plu = pull upstream
+#    rao = remote add origin
+#    rv = remote -v
+#    rs = remote show
     wdiff = diff --word-diff=color
     wshow = show --word-diff=color
-    lg = log --graph --all
+#    lg = log --graph --all
 [push]
     default=current
 [merge]
@@ -47,3 +47,15 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[credential]
+	helper = osxkeychain
+[github]
+	user = kirang89
+	password = whoknows89
+	oauth-token = 669f37ec415cf6f712ef39fa65eacaad599c633b
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
