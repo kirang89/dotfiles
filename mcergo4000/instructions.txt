@@ -1,0 +1,9 @@
+Instructions to remap zooming key on the Microsoft Ergonomic 4000 to scroll key
+===============================================================================
+
+cd ~/Library/Preferences
+mv com.microsoft.keyboard.pref com.microsoft.keyboard.pref.bak
+cp /path/to/dotfiles/mcergo4000/com.microsoft.keyboard.pref .
+open /Library/PreferencePanes/Microsoft\ Keyboard.prefPane
+
+Should be remapped now.
