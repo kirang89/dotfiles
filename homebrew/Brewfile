@@ -1,31 +1,35 @@
-# Install command-line tools using Homebrew
-# Usage: `brew bundle Brewfile`
-
-# Make sure we’re using the latest Homebrew
-update
-
-# Upgrade any already-installed formulae
-upgrade
-
-# Install more recent versions of some OS X tools
-install macvim --override-system-vim
-
-install brew-cask
-install git
-install grc
-install hub
-install mobile-shell
-install node
-install readline
-install reattach-to-user-namespace
-install the_silver_searcher
-install mackup
-install tmux
-install wget
-install zsh
-
-tap monochromegane/pt
-install pt
-
-# Remove outdated versions from the cellar
-cleanup
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "sachaos/todoist"
+brew "autoconf"
+brew "gmp"
+brew "coreutils"
+brew "libyaml"
+brew "openssl@3", link: false
+brew "asdf"
+brew "autojump"
+brew "bottom"
+brew "broot"
+brew "libssh2"
+brew "curl"
+brew "diff-so-fancy"
+brew "exa"
+brew "fd"
+brew "fzf"
+brew "git"
+brew "htop"
+brew "leiningen"
+brew "minikube"
+brew "mtr"
+brew "pgcli"
+brew "starship"
+brew "tldr"
+brew "tmux"
+brew "tokei"
+brew "vim"
+brew "wxwidgets"
+brew "sachaos/todoist/todoist"
+cask "emacs"
+cask "font-hack-nerd-font"
+cask "multipass"
+cask "wireshark"

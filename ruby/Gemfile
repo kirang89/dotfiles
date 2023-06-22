@@ -1,7 +1,0 @@
-source 'https://rubygems.org'
-gem 'json'
-gem 'chef'
-gem 'knife-solo'
-gem 'librarian'
-gem 'librarian-chef'
-
