@@ -1,0 +1,9 @@
+erlang 26.0.1
+elixir 1.15.0-otp-26
+java openjdk-20.0.1
+clojure 1.11.1.1347
+jq 1.6
+ripgrep 13.0.0
+vim 9.0.1640
+wrk 4.2.0
+ruby 2.7.8
