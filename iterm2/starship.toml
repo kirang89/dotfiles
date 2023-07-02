@@ -1,0 +1,45 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[time]
+disabled = false
+format = '[$time]($style) '
+style = "dimmed"
+
+
+#[git_state]
+#progress_divider = " of "
+
+# [character]
+# symbol = "↳"
+# error_symbol = "✗"
+# use_symbol_for_status = true
+
+[username]
+disabled = true
+
+[cmd_duration]
+show_notifications = true
+min_time_to_notify = 60_000
+
+[hostname]
+ssh_only = true
+
+[gcloud]
+disabled = true
+
+[elixir]
+disabled = false
+
+[git_branch]
+ignore_branches = ['master', 'main']
+
+[custom.docker]
+description = "Shows the docker symbol if the current directory has Dockerfile or docker-compose.yml files"
+command = "echo 🐳"
+files = ["Dockerfile", "docker-compose.yml", "docker-compose.yaml"]
+when = ''' command -v docker &> /dev/null; exit (echo $?); '''
