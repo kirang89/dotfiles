@@ -1,21 +1,43 @@
 [user]
 	name = Kiran Gangadharan
-	email = me@kirang.in
 [core]
-	editor = emc
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = vim
+  pager = delta
+	#pager = diff-so-fancy | less --tabs=4 -RFX
+
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
 [magit]
 	hideCampaign = true
 [alias]
-        lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
+        lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative --decorate-refs-exclude "tag*"
         tree = !git lg --graph
         unstage = reset HEAD
         visual = !gitk
-        st = status
+        s = status -s
         uncommit = reset --soft HEAD^
         progress = diff --stat
         pg = diff --shortstat
+        amend = commit --amend --reuse-message=HEAD
+        contributors = shortlog --summary --numbered
+        pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr"
+        mr = !"pr() { git fetch origin merge-requests/$1/head:mr-$1; git checkout mr-$1; }; pr"
+	      credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 [github]
 	user = kirang89
 [pull]
 	ff = only
+	rebase = true
+[init]
+	defaultBranch = main
+[commit]
+	template = /Users/kiran/.gitmessage
+[merge]
+  conflictstyle = zdiff3
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
