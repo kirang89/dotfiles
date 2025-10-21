@@ -49,13 +49,12 @@ sudo pacman -S stow
 
 ### Available Packages
 
-- **aerospace** - Window management (`.config/aerospace/`)
+- **aerospace** - Window management (`.aerospace.toml`)
 - **asdf** - Version manager (`.tool-versions`)
 - **elixir** - Elixir/IEx configuration (`.iex.exs`)
-- **ghostty** - Terminal emulator (`.config/ghostty/`)
+- **ghostty** - Terminal emulator (`Library/Application Support/com.mitchellh.ghostty/`)
 - **git** - Git configuration (`.gitconfig`)
 - **homebrew** - Homebrew bundle (`.Brewfile`)
-- **karabiner** - Keyboard customization (`.config/karabiner/`)
 - **tmux** - Terminal multiplexer (`.tmux.conf`)
 - **vim** - Vim editor (`.vimrc`)
 - **zsh** - Zsh shell (`.zshrc`)
