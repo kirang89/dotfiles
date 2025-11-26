@@ -47,6 +47,12 @@ sudo pacman -S stow
    stow */
    ```
 
+4. Install Homebrew packages (optional):
+   ```bash
+   stow homebrew
+   brew bundle --file=~/.Brewfile
+   ```
+
 ### Available Packages
 
 - **aerospace** - Window management (`.aerospace.toml`)
@@ -55,6 +61,7 @@ sudo pacman -S stow
 - **ghostty** - Terminal emulator (`.config/ghostty/`)
 - **git** - Git configuration (`.gitconfig`)
 - **homebrew** - Homebrew bundle (`.Brewfile`)
+- **neovim** - Neovim editor (`.config/nvim/`)
 - **tmux** - Terminal multiplexer (`.tmux.conf`)
 - **vim** - Vim editor (`.vimrc`)
 - **zsh** - Zsh shell (`.zshrc`)
