@@ -52,7 +52,7 @@ sudo pacman -S stow
 - **aerospace** - Window management (`.aerospace.toml`)
 - **asdf** - Version manager (`.tool-versions`)
 - **elixir** - Elixir/IEx configuration (`.iex.exs`)
-- **ghostty** - Terminal emulator (`Library/Application Support/com.mitchellh.ghostty/`)
+- **ghostty** - Terminal emulator (`.config/ghostty/`)
 - **git** - Git configuration (`.gitconfig`)
 - **homebrew** - Homebrew bundle (`.Brewfile`)
 - **tmux** - Terminal multiplexer (`.tmux.conf`)
