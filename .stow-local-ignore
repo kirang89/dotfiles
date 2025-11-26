@@ -3,3 +3,5 @@
 ^/\.gitignore
 ^/\.stow-local-ignore
 ^/obsidian-vault-config
+^/glove80
+^/CLAUDE\.md
