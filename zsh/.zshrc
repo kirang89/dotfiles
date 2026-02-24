@@ -63,6 +63,8 @@ export PATH  # already deduped; kept for clarity
 # --- External sources ---
 [[ -r $HOME/aliases.zsh ]] && source $HOME/aliases.zsh
 [[ -r $HOME/.opam/opam-init/init.zsh ]] && source $HOME/.opam/opam-init/init.zsh > /dev/null 2>&1
+[[ -f $HOME/.secrets ]] && source $HOME/.secrets
+
 # --- Completions ---
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -100,22 +102,9 @@ eval "$(direnv hook zsh)"
 # Uncomment to enable completion waiting dots:
 # COMPLETION_WAITING_DOTS="true"
 
-
-# --- API KEYS ---
-#export OPENAI_API_KEY=REDACTED
-export OPENAI_API_KEY=REDACTED
-#export OPENAI_API_KEY=REDACTED
-#export ANTHROPIC_API_KEY=REDACTED
-#export ANTHROPIC_API_KEY=REDACTED
-export ANTHROPIC_API_KEY=REDACTED
-export GOOGLE_API_KEY=REDACTED
-export OPENROUTER_API_KEY=REDACTED
 export OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
 
 export CHROMA_PATH="http://localhost:8000"
-export LLAMA_CLOUD_API_KEY=REDACTED
-export GLHF_API_KEY=REDACTED
-export JINA_API_KEY="REDACTED"
 
 # bun completions
 [ -s "/Users/kiran/.bun/_bun" ] && source "/Users/kiran/.bun/_bun"
@@ -123,28 +112,3 @@ export JINA_API_KEY="REDACTED"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# ------ Zellij ---------
-
-alias zj='zellij'
-alias zjls='zellij list-sessions --short'
-
-# Create or attach to a session
-zjw() {
-  local name="${PWD:t}"
-  zellij attach "$name" --create
-}
-
-# Kill selected session via fzf
-zjkillf() {
-  local s
-  s=$(zellij list-sessions --short 2>/dev/null | fzf --prompt='kill session > ' --height=40% --reverse) || return
-  zellij kill-session "$s"
-}
-
-# Delete selected session via fzf (session metadata)
-zjdelf() {
-  local s
-  s=$(zellij list-sessions --short 2>/dev/null | fzf --prompt='delete session > ' --height=40% --reverse) || return
-  zellij delete-session "$s"
-}
