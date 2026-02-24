@@ -1,103 +1,156 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# --- Core behavior ---
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_COMPFIX="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
-########### User configuration ############
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+HIST_STAMPS="yyyy-mm-dd"
+plugins=(git)
+# --- History ---
+setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_SAVE_NO_DUPS HIST_EXPIRE_DUPS_FIRST
+setopt HIST_REDUCE_BLANKS SHARE_HISTORY HIST_NO_STORE EXTENDED_HISTORY
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=10000
+HISTSIZE=50000
+# --- Locale & editor ---
 export LANG=en_US.UTF-8
-#export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export EDITOR=nvim
+# --- PATH (dedup + guarded additions) ---
+typeset -U path PATH
+[[ -d /opt/homebrew/opt/libiconv/bin ]] && path=(/opt/homebrew/opt/libiconv/bin $path)
+[[ -d /opt/homebrew/opt/curl/bin     ]] && path=(/opt/homebrew/opt/curl/bin $path)
+[[ -d /nix/var/nix/profiles/default/bin ]] && path=(/nix/var/nix/profiles/default/bin $path)
+[[ -d $HOME/.nix-profile/bin         ]] && path=($HOME/.nix-profile/bin $path)
+[[ -d $HOME/.local/bin               ]] && path=($HOME/.local/bin $path)
+[[ -d $HOME/.codeium/windsurf/bin    ]] && path=($HOME/.codeium/windsurf/bin $path)
+[[ -d $HOME/.cache/lm-studio/bin     ]] && path=($HOME/.cache/lm-studio/bin $path)
+[[ -d ${ASDF_DATA_DIR:-$HOME/.asdf}/shims ]] && path=(${ASDF_DATA_DIR:-$HOME/.asdf}/shims $path)
+export PATH
 
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-
-# Jump Directory
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-# FZF
-source ~/.fzf.zsh
+# --- FZF ---
+source $HOME/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# Erlang/Elixir
+eval "$(fzf --zsh)"
+# --- Erlang/Elixir ---
 export ERL_AFLAGS="-kernel shell_history enabled"
+# --- Bat ---
+export BAT_THEME="TwoDark"
+# --- Backblaze ---
+# export B2_APPLICATION_KEY_ID="0011f588ef5f9db0000000003"
+# export B2_APPLICATION_KEY="REDACTED"
+# --- asdf / Go ---
+[[ -r $HOME/.asdf/plugins/golang/set-env.zsh ]] && source $HOME/.asdf/plugins/golang/set-env.zsh
+export GOPATH="$(go env GOPATH 2>/dev/null)"
+[[ -n $GOPATH ]] && path=($GOPATH/bin $path)
+export PATH
+# --- libffi flags for python-libmagic ---
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
 
-# Coreutils
-# Commands also provided by macOS have been installed with the prefix "g".
-# If you need to use these commands with their normal names, you
-# can add a "gnubin" directory to your PATH
-#export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
-#export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+# --- Ollama ---
+export OLLAMA_KV_CACHE_TYPE="q8_0"
+export OLLAMA_FLASH_ATTENTION=1
 
-# Starship Prompt
+# --- Functions ---
+lllm() {
+  models=$(llm models)
+  selection=$(echo "$models" | fzf --prompt="Select a model: ")
+  model=$(echo "$selection" | sed -E 's/^[^:]+: ([^ ]+).*/\1/')
+  llm -m "$model" "$@"
+}
+
+# --- Extra PATH appends (kept after function defs if needed) ---
+export PATH  # already deduped; kept for clarity
+
+# --- External sources ---
+[[ -r $HOME/aliases.zsh ]] && source $HOME/aliases.zsh
+[[ -r $HOME/.opam/opam-init/init.zsh ]] && source $HOME/.opam/opam-init/init.zsh > /dev/null 2>&1
+# --- Completions ---
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# --- Completion style ---
+zmodload zsh/complist
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+bindkey -M menuselect '^M' .accept-line
+
+# --- Key bindings ---
+# Option + Backspace: delete backward word, treating '/' as a word boundary
+backward-kill-dir() {
+  local WORDCHARS=${WORDCHARS/\//}
+  zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^[^?' backward-kill-dir
+
+# --- Prompt & utilities ---
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+# Uncomment to enable vi mode:
+# bindkey -v
+# Uncomment to load oh-my-zsh:
+# export ZSH="$HOME/.oh-my-zsh"
+# source $ZSH/oh-my-zsh.sh
+# Uncomment to enable completion waiting dots:
+# COMPLETION_WAITING_DOTS="true"
 
-source <(kubectl completion zsh)
+# Backblaze CLI
+export B2_APPLICATION_KEY_ID="0011f588ef5f9db0000000003"
+export B2_APPLICATION_KEY="REDACTED"
 
-source ~/aliases.zsh
+# --- API KEYS ---
+#export OPENAI_API_KEY=REDACTED
+export OPENAI_API_KEY=REDACTED
+#export OPENAI_API_KEY=REDACTED
+#export ANTHROPIC_API_KEY=REDACTED
+#export ANTHROPIC_API_KEY=REDACTED
+export ANTHROPIC_API_KEY=REDACTED
+export GOOGLE_API_KEY=REDACTED
+export OPENROUTER_API_KEY=REDACTED
+export OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
 
-# ASDF Manager
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export CHROMA_PATH="http://localhost:8000"
+export LLAMA_CLOUD_API_KEY=REDACTED
+export GLHF_API_KEY=REDACTED
+export JINA_API_KEY="REDACTED"
 
-source /Users/kiran/.config/broot/launcher/bash/br
+# bun completions
+[ -s "/Users/kiran/.bun/_bun" ] && source "/Users/kiran/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# ------ Zellij ---------
+
+alias zj='zellij'
+alias zjls='zellij list-sessions --short'
+
+# Create or attach to a session
+zjw() {
+  local name="${PWD:t}"
+  zellij attach "$name" --create
+}
+
+# Kill selected session via fzf
+zjkillf() {
+  local s
+  s=$(zellij list-sessions --short 2>/dev/null | fzf --prompt='kill session > ' --height=40% --reverse) || return
+  zellij kill-session "$s"
+}
+
+# Delete selected session via fzf (session metadata)
+zjdelf() {
+  local s
+  s=$(zellij list-sessions --short 2>/dev/null | fzf --prompt='delete session > ' --height=40% --reverse) || return
+  zellij delete-session "$s"
+}

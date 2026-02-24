@@ -1,5 +1,6 @@
 [user]
 	name = Kiran Gangadharan
+	email = me@kirang.in
 [core]
 	editor = vim
   pager = delta
@@ -25,6 +26,7 @@
         pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr"
         mr = !"pr() { git fetch origin merge-requests/$1/head:mr-$1; git checkout mr-$1; }; pr"
 	      credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+        showi = !"s() { git show $(git log --oneline | fzf | awk '{print $1}'); }; s"
 [github]
 	user = kirang89
 [pull]
