@@ -36,9 +36,6 @@ eval "$(fzf --zsh)"
 export ERL_AFLAGS="-kernel shell_history enabled"
 # --- Bat ---
 export BAT_THEME="TwoDark"
-# --- Backblaze ---
-# export B2_APPLICATION_KEY_ID="0011f588ef5f9db0000000003"
-# export B2_APPLICATION_KEY="REDACTED"
 # --- asdf / Go ---
 [[ -r $HOME/.asdf/plugins/golang/set-env.zsh ]] && source $HOME/.asdf/plugins/golang/set-env.zsh
 export GOPATH="$(go env GOPATH 2>/dev/null)"
@@ -103,9 +100,6 @@ eval "$(direnv hook zsh)"
 # Uncomment to enable completion waiting dots:
 # COMPLETION_WAITING_DOTS="true"
 
-# Backblaze CLI
-export B2_APPLICATION_KEY_ID="0011f588ef5f9db0000000003"
-export B2_APPLICATION_KEY="REDACTED"
 
 # --- API KEYS ---
 #export OPENAI_API_KEY=REDACTED
