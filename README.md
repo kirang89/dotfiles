@@ -63,6 +63,7 @@ sudo pacman -S stow
 - **homebrew** - Homebrew bundle (`.Brewfile`)
 - **neovim** - Neovim editor (`.config/nvim/`)
 - **tmux** - Terminal multiplexer (`.tmux.conf`)
+- **tmux-sessionizer** - Fuzzy session switcher for tmux (script + config)
 - **vim** - Vim editor (`.vimrc`)
 - **zsh** - Zsh shell (`.zshrc`)
 
