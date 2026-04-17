@@ -39,7 +39,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 automatically-unhide-macos-hidden-apps = false
 
 # Keep workspaces alive even when empty
-persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+persistent-workspaces = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -118,6 +118,7 @@ persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     alt-f = 'fullscreen'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+    alt-0 = 'workspace 0'
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
@@ -129,6 +130,7 @@ persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     alt-9 = 'workspace 9'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    alt-shift-0 = 'move-node-to-workspace 0'
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
@@ -200,5 +202,9 @@ persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 [[on-window-detected]]
   if.app-id = 'com.adobe.lightroomCC'
   run = 'move-node-to-workspace 8'
+
+# Catch-all: any window not matched above goes to workspace 0 as floating
+[[on-window-detected]]
+  run = ['move-node-to-workspace 0', 'layout floating']
 
 
