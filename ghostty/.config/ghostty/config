@@ -1,12 +1,12 @@
-font-family = BlexMono Nerd Font
-font-size = 15
-font-thicken = true
+font-family = EssentialPragmataPro Nerd Font Mono
+font-size = 18
+font-thicken = false
 
-adjust-cell-height=2%
+adjust-cell-height=8%
 
 #custom-shader = ~/.config/ghostty/shaders/cursor_smear.glsl
 
-theme=Catppuccin Mocha
+theme = TokyoNight Moon
 
 clipboard-paste-protection = true
 clipboard-trim-trailing-spaces = true
@@ -16,10 +16,12 @@ background-opacity=1.0
 background-blur=false
 background-blur-radius = 30
 
-macos-option-as-alt = left
+macos-option-as-alt = true
+#macos-titlebar-proxy-icon = hidden
+#macos-titlebar-style = hidden
 
 # Use legacy width method so nerd font icons align with tmux's wcwidth()
-grapheme-width-method = legacy
+#grapheme-width-method = legacy
 
 keybind = shift+enter=text:\n
 
@@ -34,3 +36,7 @@ keybind = ctrl+7=text:\x1b7
 keybind = ctrl+8=text:\x1b8
 keybind = ctrl+9=text:\x1b9
 keybind = ctrl+0=text:\x1b0
+
+window-padding-x = 4,4
+window-padding-y = 4,4
+#window-decoration = none
