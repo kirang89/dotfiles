@@ -36,7 +36,6 @@ sudo pacman -S stow
 
 2. Stow individual packages:
    ```bash
-   stow vim      # Creates symlink: ~/.vimrc -> ~/dotfiles/vim/.vimrc
    stow git      # Creates symlink: ~/.gitconfig -> ~/dotfiles/git/.gitconfig
    stow zsh      # Creates symlink: ~/.zshrc -> ~/dotfiles/zsh/.zshrc
    stow tmux     # Creates symlink: ~/.tmux.conf -> ~/dotfiles/tmux/.tmux.conf
@@ -57,14 +56,12 @@ sudo pacman -S stow
 
 - **aerospace** - Window management (`.aerospace.toml`)
 - **asdf** - Version manager (`.tool-versions`)
-- **elixir** - Elixir/IEx configuration (`.iex.exs`)
 - **ghostty** - Terminal emulator (`.config/ghostty/`)
 - **git** - Git configuration (`.gitconfig`)
 - **homebrew** - Homebrew bundle (`.Brewfile`)
 - **neovim** - Neovim editor (`.config/nvim/`)
 - **tmux** - Terminal multiplexer (`.tmux.conf`)
 - **tmux-sessionizer** - Fuzzy session switcher for tmux (script + config)
-- **vim** - Vim editor (`.vimrc`)
 - **zsh** - Zsh shell (`.zshrc`)
 
 ### Managing Changes
@@ -85,7 +82,7 @@ Since the files in your home directory are symlinked to this repository, any cha
 To unlink a package:
 
 ```bash
-stow -D vim  # Removes the ~/.vimrc symlink
+stow -D tmux  # Removes the ~/.tmux.conf symlink
 ```
 
 ### Notes

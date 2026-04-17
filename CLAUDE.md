@@ -17,13 +17,11 @@ The repository uses a Stow-based architecture where each top-level directory rep
 **Key packages:**
 - `aerospace/` - Window management config (`.aerospace.toml`)
 - `asdf/` - Version manager tooling (`.tool-versions`)
-- `elixir/` - IEx REPL configuration (`.iex.exs`)
 - `ghostty/` - Terminal emulator config (`.config/ghostty/`)
 - `git/` - Git configuration (`.gitconfig`)
 - `homebrew/` - Brewfile for dependency management (`.Brewfile`)
 - `neovim/` - Neovim editor config (`.config/nvim/`)
 - `tmux/` - Terminal multiplexer (`.tmux.conf`)
-- `vim/` - Vim editor (`.vimrc`)
 - `zsh/` - Zsh shell configuration (`.zshrc`)
 - `obsidian-vault-config/` - Not managed by Stow
 
